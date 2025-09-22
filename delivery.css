@@ -1,0 +1,117 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FFF4E8;
+  font-family: Arial, sans-serif;
+}
+
+/* Fixed Header */
+.header {
+  width: 100%;
+  height: 75px;
+  background-color: rgb(252,225,34);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.header2 {
+  width: 100%;
+  height: 25px;
+  background-color: rgb(252,134,0);
+  position: fixed;
+  top: 65px;
+  left: 0;
+  z-index: 10;
+}
+.MB img{
+  width: 65px;
+  height: 65px;
+  position: fixed;
+  top: 0px;
+  left: 10px;
+  right: 0px;
+  z-index: 10;
+}
+.logo{
+  font-family: Fredoka One;
+}
+/* Carousel container */
+.carousel {
+  position: relative;
+  margin-top: 150px;
+  width: 700px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border-radius: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Slides wrapper */
+.slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+/* Each slide takes full carousel size */
+.slide {
+  flex: 0 0 100%;   /* one slide = full width */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 40px;
+}
+
+/* Arrows */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 50%;
+  user-select: none;
+  transition: background 0.3s;
+  z-index: 5;
+}
+.prev { left: 20px; }
+.next { right: 20px; }
+.prev:hover,
+.next:hover { background: rgba(0,0,0,0.8); }
+
+/* Dots */
+.dots {
+  text-align: center;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+}
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background 0.3s;
+}
+.dot.active,
+.dot:hover { background-color: #717171; }
