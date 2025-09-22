@@ -4,15 +4,14 @@ html, body {
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #f8eadb;
-  min-height: 2000px;
+  min-height: 15000px;
 
-  /* Custom Scrollbar */
+  /* Main scrollbar */
   scrollbar-width: thin;
   scrollbar-color: #fc8600 #fce234;
 }
-
 html::-webkit-scrollbar { width: 12px; }
-html::-webkit-scrollbar-track { background: #696969; border-radius: 6px; }
+html::-webkit-scrollbar-track { background: #fce234; border-radius: 6px; }
 html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; border: 3px solid #fce234; }
 
 /* === Fixed Header === */
@@ -77,7 +76,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 /* Scrollspy Header */
 .header2 {
   width: 100%;
-  height: 35px;
+  height: 40px;
   position: fixed;
   top: 55px;
   left: 0;
@@ -86,9 +85,12 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   overflow-y: hidden;
   white-space: nowrap;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: rgb(252,134,0);
+  padding-bottom: 4px;
 }
+
+/* Links inside header2 */
 .header2-scroll a {
   display: inline-block;
   padding: 0 15px;
@@ -98,48 +100,44 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   color: #ffffff;
   text-decoration: none;
   transition: color 0.3s, text-shadow 0.3s;
-  border-right: 1px solid rgba(255,255,255,0.3); /* vertical line between links */
-  position: relative;
-  top: 4px;
+  border-right: 1px solid rgba(255,255,255,0.3);
 }
-
-.header2-scroll a:last-child {
-  border-right: none;
-}
-
+.header2-scroll a:last-child { border-right: none; }
 .header2-scroll a.active {
   color: #b22222;
   font-weight: bold;
-  /* glow effect */
   text-shadow: 0 0 10px rgb(252,134,0), 0 0 20px rgb(252,134,0);
 }
 
-/* Sections Titles Only */
+/* Sections */
 .section {
   position: relative;
-  height: auto;
   width: 70%;
   max-width: 700px;
   padding: 5px 0;
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
   font-family: 'Fredoka One', cursive;
   font-size: 36px;
   color: #b22222;
   font-weight: bold;
   text-align: left;
   margin-left: 100px;
-  margin-top: 0;
   margin-bottom: 1000px;
 }
 .section:last-of-type { margin-bottom: 0; }
 .box {
-  width: 200px;           /* width of the box */
-  height: 100px;          /* height of the box */
-  background-color: orange; /* fill color */
-  border: 2px solid #b22222; /* border */
-  border-radius: 10px;    /* rounded corners */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* shadow */
-  margin: 20px auto;      /* center horizontally */
+  width: 200px;
+  height: 100px;
+  background-color: orange;
+  border: 2px solid #b22222;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin: 20px auto;
 }
+
+/* Header2 scrollbar - Chrome/Edge/Safari */
+.header2::-webkit-scrollbar { height: 5px; }
+.header2::-webkit-scrollbar-track { background: rgb(252,225,34); border-radius: 3px; }
+.header2::-webkit-scrollbar-thumb { background-color: rgb(252,134,0); border-radius: 3px; }
+
+/* Header2 scrollbar - Firefox */
+.header2 { scrollbar-width: thin; scrollbar-color: rgb(252,134,0) rgb(252,225,34); }
