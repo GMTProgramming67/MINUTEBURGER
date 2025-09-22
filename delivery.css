@@ -3,8 +3,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f8eadb;
-  min-height: 15000px;
+  background-color: #fff9f5;
+  min-height: 10000px;
 
   /* Main scrollbar */
   scrollbar-width: thin;
@@ -45,7 +45,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   outline: none;
   text-align: center;
   font-family: 'Fredoka One', cursive;
-  color: #b22222;
+  color: #888484;
   background-color: #fff8ef;
   transition: all 0.3s ease;
 }
@@ -113,7 +113,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 .section {
   position: relative;
   width: 70%;
-  max-width: 700px;
+  max-width: 1000px;
   padding: 5px 0;
   font-family: 'Fredoka One', cursive;
   font-size: 36px;
@@ -121,17 +121,69 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   font-weight: bold;
   text-align: left;
   margin-left: 100px;
-  margin-bottom: 1000px;
+  margin-bottom: 50px;
 }
-.section:last-of-type { margin-bottom: 0; }
+
+/* Boxes container (flex for multiple boxes in a row) */
+.boxes-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 boxes per row */
+  gap: 100px; /* adjust spacing between boxes */
+  margin-top: 15px;
+}
+
+/* Box */
 .box {
   width: 200px;
-  height: 100px;
-  background-color: orange;
-  border: 2px solid #b22222;
+  height: 300px;
+  background-color: rgb(231, 228, 223);
+  border: 0.5px solid #777777;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  margin: 20px auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-image {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+.box-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box-text {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.box-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+
+.box-description {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.box-price {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  text-align: right;
 }
 
 /* Header2 scrollbar - Chrome/Edge/Safari */
