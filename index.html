@@ -1,57 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" rel="stylesheet" href="delivery.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito&family=Quicksand&display=swap" rel="stylesheet">
-  <title>Minute Burger Delivery: Multimodal Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="delivery.css">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito&family=Quicksand&display=swap" rel="stylesheet">
+<title>Minute Burger Delivery</title>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <!-- Logo -->
-    <div class="logo">
-      <img src="MINUTEBURGER.png" alt="Minute Burger Logo">
-      <span>MINUTE BURGER</span>
-    </div>
 
-    <!-- Centered search input -->
-    <div class="search-bar">
-      <input type="text" placeholder="Enter your order">
-    </div>
-
-    <!-- Menu -->
-    <nav class="menu">
-      <a href="#">Menu</a>
-      <a href="#">Deals</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Thin bar under header -->
-  <div class="header2"></div>
-
-  <!-- Carousel -->
-  <div class="carousel">
-    <div class="slides">
-      <div class="slide"><img src="CHILI-CHEESE.webp" alt="Chili Cheese"></div>
-      <div class="slide"><img src="FRENCH.webp" alt="French Fries"></div>
-      <div class="slide"><img src="RED-HOT.jpg" alt="Red Hot"></div>
-    </div>
-
-    <!-- Arrows -->
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-
-    <!-- Dots -->
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+<!-- Fixed Header -->
+<header class="header">
+  <div class="logo">
+    <img src="MINUTEBURGER.png" alt="Logo">
+    <span>MINUTE BURGER</span>
   </div>
 
-  <script src="delivery.js"></script>
+  <div class="search-bar">
+    <input type="text" placeholder="Enter your order">
+  </div>
+
+  <nav class="menu">
+    <a href="#">Menu</a>
+    <a href="#">Deals</a>
+    <a href="#">Cart</a>
+  </nav>
+</header>
+
+<!-- Horizontal Scrollspy Below Carousel -->
+<div class="header2">
+  <div class="header2-scroll">
+    <a href="#whats-new">Whats New</a>
+    <a href="#best-seller">Best Seller</a>
+    <a href="#premium-bundles">Premium Bundles</a>
+    <a href="#bigtime-burgers">Bigtime Burgers</a>
+    <a href="#ala-carte">Ala Carte</a>
+    <a href="#sulit-sarap-breakfast">Sulit Sarap Breakfast</a>
+    <a href="#anytime-merienda">Anytime Merienda</a>
+    <a href="#sulit-burger">Sulit Burger</a>
+    <a href="#beverages">Beverages</a>
+    <a href="#add-on">Add-on</a>
+  </div>
+</div>
+
+<!-- Carousel -->
+<div class="carousel">
+  <div class="slides">
+    <div class="slide"><img src="CHILI-CHEESE.webp" alt="Chili Cheese"></div>
+    <div class="slide"><img src="FRENCH.webp" alt="French Fries"></div>
+    <div class="slide"><img src="RED-HOT.jpg" alt="Red Hot"></div>
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+
+<!-- Hidden top spacer -->
+<div id="top-spacer" class="section" style="height: 400px; display: none;"></div>
+
+<!-- Sections -->
+<div id="whats-new" class="section">Whats New
+  <div class="box"></div>
+</div>
+<div id="best-seller" class="section">Best Seller</div>
+<div id="premium-bundles" class="section">Premium Bundles</div>
+<div id="bigtime-burgers" class="section">Bigtime Burgers</div>
+<div id="ala-carte" class="section">Ala Carte</div>
+<div id="sulit-sarap-breakfast" class="section">Sulit Sarap Breakfast</div>
+<div id="anytime-merienda" class="section">Anytime Merienda</div>
+<div id="sulit-burger" class="section">Sulit Burger</div>
+<div id="beverages" class="section">Beverages</div>
+<div id="add-on" class="section">Add-on</div>
+
+<script src="delivery.js"></script>
 </body>
 </html>
