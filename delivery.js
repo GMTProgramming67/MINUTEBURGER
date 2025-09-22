@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   /* === Scrollspy === */
   const links = document.querySelectorAll(".header2-scroll a");
   const sections = document.querySelectorAll(".section");
-  const HEADER_HEIGHT = 60 + 35;
-  const SCROLL_OFFSET = 350; // glow triggers 95px above section
+  const HEADER_HEIGHT = 60 + 45; // header + header2 height
+  const GLOW_OFFSET = 95;
 
-  // Smooth scroll on click
+  // Smooth scroll
   links.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
@@ -45,18 +45,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Scrollspy highlights link correctly even on fast scroll
+  // Scrollspy and auto-scroll header2
   window.addEventListener("scroll", () => {
-    const scrollPos = window.scrollY + HEADER_HEIGHT + SCROLL_OFFSET;
+    const scrollPos = window.scrollY + HEADER_HEIGHT + GLOW_OFFSET;
 
-    sections.forEach((section, idx) => {
+    sections.forEach(section => {
       const id = section.id;
       const link = document.querySelector(`.header2-scroll a[href="#${id}"]`);
 
       if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
         links.forEach(l => l.classList.remove("active"));
-        if (idx !== 0 && link) { // skip first section
+        if (link) {
           link.classList.add("active");
+
+          // auto-scroll header2 so active link is visible
+          const header2 = document.querySelector(".header2");
+          const linkRect = link.getBoundingClientRect();
+          const headerRect = header2.getBoundingClientRect();
+          if (linkRect.left < headerRect.left || linkRect.right > headerRect.right) {
+            header2.scrollBy({ left: linkRect.left - headerRect.left - 10, behavior: 'smooth' });
+          }
         }
       }
     });
