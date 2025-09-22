@@ -193,3 +193,32 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 
 /* Header2 scrollbar - Firefox */
 .header2 { scrollbar-width: thin; scrollbar-color: rgb(252,134,0) rgb(252,225,34); }
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Base state */
+.box {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.box.hiding {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.box.hidden {
+  display: none;
+}
+
+.no-results {
+  font-style: italic;
+  color: #777;
+  margin: 10px 0;
+}
+
+
