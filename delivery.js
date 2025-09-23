@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* === Scrollspy & Glow Titles === */
   const links = document.querySelectorAll(".header2-scroll a");
   const sections = document.querySelectorAll(".section");
-  const HEADER_HEIGHT = 105; // 60 + 45
+  const HEADER_HEIGHT = 105;
   const GLOW_OFFSET = 95;
 
   links.forEach(link => {
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = document.getElementById(targetId);
         if (target) window.scrollTo({ top: target.offsetTop - HEADER_HEIGHT, behavior: 'smooth' });
       }
-      else if (index === 3 && cartBox) cartBox.classList.toggle('hidden'); // 4th = Cart
+      else if (index === 3 && cartBox) cartBox.classList.toggle('hidden');
     });
   });
 
@@ -148,8 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartTotalEl = document.getElementById("cart-total");
   let count = 0;
   const cartData = {};
-
-  // transition duration (ms) used for the fly animation (match the CSS)
   const TRANSITION_MS = 800;
 
   document.querySelectorAll(".add-cart-btn").forEach(btn => {
@@ -158,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
 
       const button = e.currentTarget;
-      // simple debounce to prevent immediate double clicks
       if (button.dataset.busy === "1") return;
       button.dataset.busy = "1";
       setTimeout(() => { delete button.dataset.busy; }, 300);
@@ -169,21 +166,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const imgEl = box.querySelector("img");
       const imgSrc = imgEl ? imgEl.getAttribute("src") : "";
 
-      // Fly-to-cart animation (clone)
+      // Fly-to-cart animation starting at + button position
       if (imgEl) {
         const imgClone = imgEl.cloneNode(true);
-        const rect = imgEl.getBoundingClientRect();
+
+        const btnRect = button.getBoundingClientRect();
         imgClone.style.position = "fixed";
-        imgClone.style.left = rect.left + "px";
-        imgClone.style.top = rect.top + "px";
-        imgClone.style.width = rect.width + "px";
-        imgClone.style.height = rect.height + "px";
+        imgClone.style.left = btnRect.left + "px";
+        imgClone.style.top = btnRect.top + "px";
+        imgClone.style.width = "40px";
+        imgClone.style.height = "40px";
         imgClone.style.transition = "all " + (TRANSITION_MS / 1000) + "s ease-in-out";
         imgClone.style.zIndex = 10000;
         document.body.appendChild(imgClone);
 
         const cartRect = cart.getBoundingClientRect();
-        // trigger transition
         requestAnimationFrame(() => {
           imgClone.style.left = cartRect.left + "px";
           imgClone.style.top = cartRect.top + "px";
@@ -192,19 +189,15 @@ document.addEventListener("DOMContentLoaded", () => {
           imgClone.style.opacity = "0.5";
         });
 
-        // remove after transition (single execution)
         setTimeout(() => {
           if (imgClone && imgClone.parentNode) imgClone.parentNode.removeChild(imgClone);
 
-          // Update cart data AFTER the animation
           if (!cartData[title]) cartData[title] = { price: price, quantity: 0, img: imgSrc };
           cartData[title].quantity++;
 
-          // recalc total count from cartData to avoid any mismatch
           count = Object.values(cartData).reduce((s, it) => s + (it.quantity || 0), 0);
           cartCount.textContent = count;
 
-          // shake cart (visual)
           cart.style.transform = "translateX(-10px)";
           setTimeout(() => { cart.style.transform = "translateX(10px)"; }, 50);
           setTimeout(() => { cart.style.transform = "translateX(0)"; }, 100);
@@ -212,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
           updateCartDisplay();
         }, TRANSITION_MS + 50);
       } else {
-        // fallback: if no image, update immediately
         if (!cartData[title]) cartData[title] = { price: price, quantity: 0, img: "" };
         cartData[title].quantity++;
         count = Object.values(cartData).reduce((s, it) => s + (it.quantity || 0), 0);
@@ -244,7 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemEl = document.createElement("div");
       itemEl.classList.add("cart-item");
 
-      // build inner structure with image, name (Fredoka styles handled in CSS), qty and price
       itemEl.innerHTML = `
         <img src="${item.img || 'placeholder.jpg'}" alt="${itemName}">
         <div class="cart-item-info">
@@ -257,13 +248,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="cart-item-price">₱${item.price * item.quantity}</div>
       `;
 
-      // Minus button functionality (decrease quantity by 1)
       const minusBtn = itemEl.querySelector(".cart-item-minus");
       minusBtn.addEventListener("click", () => {
         item.quantity--;
         if (item.quantity <= 0) delete cartData[itemName];
 
-        // recompute count and update badge
         count = Object.values(cartData).reduce((s, it) => s + (it.quantity || 0), 0);
         cartCount.textContent = count;
 
