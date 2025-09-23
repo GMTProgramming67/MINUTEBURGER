@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* === Scrollspy & Glow Titles === */
   const links = document.querySelectorAll(".header2-scroll a");
   const sections = document.querySelectorAll(".section");
-  const HEADER_HEIGHT = 60 + 45;
+  const HEADER_HEIGHT = 105; // 60 + 45
   const GLOW_OFFSET = 95;
 
   links.forEach(link => {
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* === Top Menu & Cart === */
+  /* === Top Menu & Cart Box Toggle === */
   const topMenuLinks = document.querySelectorAll('.menu a');
   const header2Links = document.querySelectorAll('.header2-scroll a');
   const cartBox = document.getElementById('cart-box');
@@ -133,58 +133,107 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = document.getElementById(targetId);
         if (target) window.scrollTo({ top: target.offsetTop - HEADER_HEIGHT, behavior: 'smooth' });
       }
-      else if (index === 3 && cartBox) cartBox.classList.toggle('hidden');
+      else if (index === 3 && cartBox) cartBox.classList.toggle('hidden'); // 4th = Cart
     });
   });
 
   if (cartClose && cartBox) {
     cartClose.addEventListener('click', () => cartBox.classList.add('hidden'));
   }
-});
-const cart = document.getElementById("cart");
-const cartCount = document.getElementById("cart-count");
-let count = 0;
 
-document.querySelectorAll(".add-cart-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
-    const box = e.target.closest(".box");
-    const img = box.querySelector("img");
-    const imgClone = img.cloneNode(true);
-    
-    const rect = img.getBoundingClientRect();
-    imgClone.style.position = "fixed";
-    imgClone.style.left = rect.left + "px";
-    imgClone.style.top = rect.top + "px";
-    imgClone.style.width = rect.width + "px";
-    imgClone.style.height = rect.height + "px";
-    imgClone.style.transition = "all 0.8s ease-in-out";
-    imgClone.style.zIndex = 1000;
-    
-    document.body.appendChild(imgClone);
-    
-    const cartRect = cart.getBoundingClientRect();
-    
-    setTimeout(() => {
-      imgClone.style.left = cartRect.left + "px";
-      imgClone.style.top = cartRect.top + "px";
-      imgClone.style.width = "20px";
-      imgClone.style.height = "20px";
-      imgClone.style.opacity = 0.5;
-    }, 10);
-    
-    imgClone.addEventListener("transitionend", () => {
-      imgClone.remove();
-      count++;
-      cartCount.textContent = count;
-      
-      // shake cart
-      cart.style.transform = "translateX(-10px)";
-      setTimeout(() => {
-        cart.style.transform = "translateX(10px)";
-      }, 50);
-      setTimeout(() => {
-        cart.style.transform = "translateX(0)";
-      }, 100);
+  /* === Cart Functionality === */
+  const cart = document.getElementById("cart");
+  const cartCount = document.getElementById("cart-count");
+  const cartItemsContainer = document.querySelector("#cart-box .cart-items");
+  const cartTotalEl = document.getElementById("cart-total");
+  let count = 0;
+  const cartData = {};
+
+  document.querySelectorAll(".add-cart-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      const box = e.target.closest(".box");
+      const title = box.querySelector(".box-title").textContent;
+      const price = parseInt(box.getAttribute("data-price"), 10);
+
+      // Fly-to-cart animation
+      const img = box.querySelector("img");
+      const imgClone = img.cloneNode(true);
+      const rect = img.getBoundingClientRect();
+      imgClone.style.position = "fixed";
+      imgClone.style.left = rect.left + "px";
+      imgClone.style.top = rect.top + "px";
+      imgClone.style.width = rect.width + "px";
+      imgClone.style.height = rect.height + "px";
+      imgClone.style.transition = "all 0.8s ease-in-out";
+      imgClone.style.zIndex = 1000;
+      document.body.appendChild(imgClone);
+
+      const cartRect = cart.getBoundingClientRect();
+      requestAnimationFrame(() => {
+        imgClone.style.left = cartRect.left + "px";
+        imgClone.style.top = cartRect.top + "px";
+        imgClone.style.width = "20px";
+        imgClone.style.height = "20px";
+        imgClone.style.opacity = 0.5;
+      });
+
+      imgClone.addEventListener("transitionend", () => {
+        imgClone.remove();
+
+        // Update count badge
+        count++;
+        cartCount.textContent = count;
+
+        // Shake cart
+        cart.style.transform = "translateX(-10px)";
+        setTimeout(() => { cart.style.transform = "translateX(10px)"; }, 50);
+        setTimeout(() => { cart.style.transform = "translateX(0)"; }, 100);
+
+        // Add/update cart item
+        if (!cartData[title]) cartData[title] = { price: price, quantity: 0 };
+        cartData[title].quantity++;
+
+        updateCartDisplay();
+      });
     });
   });
+
+  function updateCartDisplay() {
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    if (Object.keys(cartData).length === 0) {
+      cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+      cartTotalEl.textContent = `Total: ₱0`;
+      return;
+    }
+
+    Object.keys(cartData).forEach(itemName => {
+      const item = cartData[itemName];
+      total += item.price * item.quantity;
+
+      const itemEl = document.createElement("div");
+      itemEl.classList.add("cart-item");
+      itemEl.innerHTML = `
+        <span class="cart-item-name">${itemName}</span>
+        <span class="cart-item-quantity">${item.quantity}x</span>
+        <span class="cart-item-price">₱${item.price * item.quantity}</span>
+        <button class="cart-item-minus">-</button>
+      `;
+
+      // Minus button functionality
+      itemEl.querySelector(".cart-item-minus").addEventListener("click", () => {
+        item.quantity--;
+        count--;
+        cartCount.textContent = count;
+
+        if (item.quantity <= 0) delete cartData[itemName];
+        updateCartDisplay();
+      });
+
+      cartItemsContainer.appendChild(itemEl);
+    });
+
+    cartTotalEl.textContent = `Total: ₱${total}`;
+  }
 });
