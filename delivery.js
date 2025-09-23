@@ -149,52 +149,81 @@ document.addEventListener("DOMContentLoaded", () => {
   let count = 0;
   const cartData = {};
 
+  // transition duration (ms) used for the fly animation (match the CSS)
+  const TRANSITION_MS = 800;
+
   document.querySelectorAll(".add-cart-btn").forEach(btn => {
     btn.addEventListener("click", e => {
-      const box = e.target.closest(".box");
-      const title = box.querySelector(".box-title").textContent;
-      const price = parseInt(box.getAttribute("data-price"), 10);
+      e.preventDefault();
+      e.stopPropagation();
 
-      // Fly-to-cart animation
-      const img = box.querySelector("img");
-      const imgClone = img.cloneNode(true);
-      const rect = img.getBoundingClientRect();
-      imgClone.style.position = "fixed";
-      imgClone.style.left = rect.left + "px";
-      imgClone.style.top = rect.top + "px";
-      imgClone.style.width = rect.width + "px";
-      imgClone.style.height = rect.height + "px";
-      imgClone.style.transition = "all 0.8s ease-in-out";
-      imgClone.style.zIndex = 1000;
-      document.body.appendChild(imgClone);
+      const button = e.currentTarget;
+      // simple debounce to prevent immediate double clicks
+      if (button.dataset.busy === "1") return;
+      button.dataset.busy = "1";
+      setTimeout(() => { delete button.dataset.busy; }, 300);
 
-      const cartRect = cart.getBoundingClientRect();
-      requestAnimationFrame(() => {
-        imgClone.style.left = cartRect.left + "px";
-        imgClone.style.top = cartRect.top + "px";
-        imgClone.style.width = "20px";
-        imgClone.style.height = "20px";
-        imgClone.style.opacity = 0.5;
-      });
+      const box = button.closest(".box");
+      const title = box.querySelector(".box-title").textContent.trim();
+      const price = parseInt(box.getAttribute("data-price"), 10) || 0;
+      const imgEl = box.querySelector("img");
+      const imgSrc = imgEl ? imgEl.getAttribute("src") : "";
 
-      imgClone.addEventListener("transitionend", () => {
-        imgClone.remove();
+      // Fly-to-cart animation (clone)
+      if (imgEl) {
+        const imgClone = imgEl.cloneNode(true);
+        const rect = imgEl.getBoundingClientRect();
+        imgClone.style.position = "fixed";
+        imgClone.style.left = rect.left + "px";
+        imgClone.style.top = rect.top + "px";
+        imgClone.style.width = rect.width + "px";
+        imgClone.style.height = rect.height + "px";
+        imgClone.style.transition = "all " + (TRANSITION_MS / 1000) + "s ease-in-out";
+        imgClone.style.zIndex = 10000;
+        document.body.appendChild(imgClone);
 
-        // Update count badge
-        count++;
+        const cartRect = cart.getBoundingClientRect();
+        // trigger transition
+        requestAnimationFrame(() => {
+          imgClone.style.left = cartRect.left + "px";
+          imgClone.style.top = cartRect.top + "px";
+          imgClone.style.width = "20px";
+          imgClone.style.height = "20px";
+          imgClone.style.opacity = "0.5";
+        });
+
+        // remove after transition (single execution)
+        setTimeout(() => {
+          if (imgClone && imgClone.parentNode) imgClone.parentNode.removeChild(imgClone);
+
+          // Update cart data AFTER the animation
+          if (!cartData[title]) cartData[title] = { price: price, quantity: 0, img: imgSrc };
+          cartData[title].quantity++;
+
+          // recalc total count from cartData to avoid any mismatch
+          count = Object.values(cartData).reduce((s, it) => s + (it.quantity || 0), 0);
+          cartCount.textContent = count;
+
+          // shake cart (visual)
+          cart.style.transform = "translateX(-10px)";
+          setTimeout(() => { cart.style.transform = "translateX(10px)"; }, 50);
+          setTimeout(() => { cart.style.transform = "translateX(0)"; }, 100);
+
+          updateCartDisplay();
+        }, TRANSITION_MS + 50);
+      } else {
+        // fallback: if no image, update immediately
+        if (!cartData[title]) cartData[title] = { price: price, quantity: 0, img: "" };
+        cartData[title].quantity++;
+        count = Object.values(cartData).reduce((s, it) => s + (it.quantity || 0), 0);
         cartCount.textContent = count;
 
-        // Shake cart
         cart.style.transform = "translateX(-10px)";
         setTimeout(() => { cart.style.transform = "translateX(10px)"; }, 50);
         setTimeout(() => { cart.style.transform = "translateX(0)"; }, 100);
 
-        // Add/update cart item
-        if (!cartData[title]) cartData[title] = { price: price, quantity: 0 };
-        cartData[title].quantity++;
-
         updateCartDisplay();
-      });
+      }
     });
   });
 
@@ -214,20 +243,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const itemEl = document.createElement("div");
       itemEl.classList.add("cart-item");
+
+      // build inner structure with image, name (Fredoka styles handled in CSS), qty and price
       itemEl.innerHTML = `
-        <span class="cart-item-name">${itemName}</span>
-        <span class="cart-item-quantity">${item.quantity}x</span>
-        <span class="cart-item-price">₱${item.price * item.quantity}</span>
-        <button class="cart-item-minus">-</button>
+        <img src="${item.img || 'placeholder.jpg'}" alt="${itemName}">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${itemName}</div>
+          <div class="cart-item-meta">
+            <span class="cart-item-quantity">${item.quantity}x</span>
+            <button class="cart-item-minus">-</button>
+          </div>
+        </div>
+        <div class="cart-item-price">₱${item.price * item.quantity}</div>
       `;
 
-      // Minus button functionality
-      itemEl.querySelector(".cart-item-minus").addEventListener("click", () => {
+      // Minus button functionality (decrease quantity by 1)
+      const minusBtn = itemEl.querySelector(".cart-item-minus");
+      minusBtn.addEventListener("click", () => {
         item.quantity--;
-        count--;
+        if (item.quantity <= 0) delete cartData[itemName];
+
+        // recompute count and update badge
+        count = Object.values(cartData).reduce((s, it) => s + (it.quantity || 0), 0);
         cartCount.textContent = count;
 
-        if (item.quantity <= 0) delete cartData[itemName];
         updateCartDisplay();
       });
 
