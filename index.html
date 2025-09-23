@@ -23,6 +23,7 @@
   <nav class="menu">
     <a href="#">Menu</a>
     <a href="#">Deals</a>
+    <a href="#">Budget</a>
     <a href="#">Cart</a>
   </nav>
 </header>
@@ -62,39 +63,60 @@
 <div id="whats-new" class="section">
   Whats New
   <div class="boxes-container">
-    <div class="box">
+    <div class="box" data-price="124">
       <div class="box-image"><img src="placeholder.jpg" alt="French Onion Franks"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 French Onion Franks</div>
         <div class="box-description">Two classic hotdogs topped with savory French onion sauce.</div>
-        <div class="box-price">₱124</div>
+        <div class="box-price-container">
+          <div class="box-price">₱124</div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
-    <div class="box">
+
+    <div class="box" data-price="182">
       <div class="box-image"><img src="placeholder.jpg" alt="Steakburger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Steakburger</div>
         <div class="box-description">Juicy beef patties seasoned and grilled to perfection.</div>
-        <div class="box-price">₱182</div>
+        <div class="box-price-container">
+          <div class="box-price">₱182</div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
-    <div class="box">
+
+    <div class="box" data-price="106">
       <div class="box-image"><img src="placeholder.jpg" alt="Chili Cheese Burger"></div>
       <div class="box-text">
         <div class="box-title">Chili Cheese Burger</div>
         <div class="box-description">A hearty burger topped with spicy chili and melted cheese.</div>
-        <div class="box-price">₱106</div>
+        <div class="box-price-container">
+          <div class="box-price">₱106</div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
-    <div class="box">
+
+    <div class="box" data-price="106">
       <div class="box-image"><img src="placeholder.jpg" alt="Red Hot Cheezy Chicken Burger"></div>
       <div class="box-text">
         <div class="box-title">Red Hot Cheezy Chicken Burger</div>
         <div class="box-description">Spicy chicken patty smothered in cheese.</div>
-        <div class="box-price">₱106</div>
+        <div class="box-price-container">
+          <div class="box-price">₱106</div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Example cart icon -->
+<div id="cart">
+  🛒
+  <div id="cart-count">0</div>
 </div>
 
 <!-- Best Seller -->
@@ -524,7 +546,30 @@
     </div>
   </div>
 </div>
+<!-- Floating Cart/Receipt Box -->
+<div id="cart-box" class="cart-box hidden">
+  <div class="cart-header">
+    <span>🛒 Your Cart</span>
+    <button id="cart-close">&times;</button>
+  </div>
+  <div class="cart-items">
+    <p>Your cart is empty.</p>
+  </div>
+  <div class="cart-footer">
+    <button id="checkout-btn">Checkout</button>
+  </div>
+</div>
+<div id="cart">
+  🛒
+  <div id="cart-count">0</div>
+</div>
 
+<!-- Cart Panel -->
+<div id="cart-panel">
+  <h3>Cart</h3>
+  <div id="cart-items"></div>
+  <div id="cart-total">Total: ₱0</div>
+</div>
 <!-- You can repeat this <div class="boxes-container"> structure for the remaining sections -->
 <!-- Ala-Carte, Sulit Sarap Breakfast, Anytime Merienda, Sulit Burger, Pinakasulit, Savers Bundle, Beverages, Add-on -->
 
