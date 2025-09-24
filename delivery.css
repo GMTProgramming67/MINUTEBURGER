@@ -530,7 +530,8 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
     gap: 5px;              /* smaller gap between text and image */
     justify-content: flex-start; /* align left */
     margin-right: 0px;
-    right: 60px;
+    right: 20px;
+    position:relative;
   }
   .logo img {
     width: 40px;  /* smaller logo image */
@@ -540,7 +541,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   /* Search Bar - bigger on mobile */
   .search-bar {
   position: relative;
-  left: -5px;          /* remove negative shift */
+  left: -13px;          /* remove negative shift */
   transform: none;
   width: 200px;      /* smaller width for mobile */
 }
@@ -555,9 +556,9 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   /* Menu items - smaller gaps */
   .menu {
     position: relative;
-    left: 20px;
+    left: 16px;
     gap: 0px;  /* less spacing between menu links */
-    font-size: 12px;
+    font-size: 16px;
   }
   .menu a {
     padding: 5px;
@@ -593,8 +594,8 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   .boxes-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 15px;
+    gap: 50px;
+    margin-top: 0px;
     justify-items: center;
   }
 
