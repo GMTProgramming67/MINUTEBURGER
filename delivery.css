@@ -594,7 +594,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   .boxes-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 15px;
     margin-top: 0px;
     justify-items: center;
   }
@@ -660,4 +660,5 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 }
 
 }
+
 
