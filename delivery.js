@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = document.getElementById(targetId);
         if (target) window.scrollTo({ top: target.offsetTop - HEADER_HEIGHT, behavior: 'smooth' });
       }
-      else if (index === 3 && cartBox) cartBox.classList.toggle('hidden');
+      else if (index === 2 && cartBox) cartBox.classList.toggle('hidden');
     });
   });
 
@@ -429,3 +429,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
