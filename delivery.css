@@ -59,7 +59,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 .logo img { width: 55px; height: 55px; }
 
 /* Menu */
-.menu { display: flex; gap: 30px; font-family: 'Fredoka One', cursive; font-size: 20px; color: #b22222; }
+.menu { display: flex; gap: 40px; font-family: 'Fredoka One', cursive; font-size: 22px; color: #b22222; position: relative; right: 45px }
 .menu a { text-decoration: none; color: inherit; transition: color 0.3s; }
 .menu a:hover { color: #fc8600; }
 
