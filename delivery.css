@@ -509,3 +509,120 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 .resizer-s { bottom: -6px; left: 50%; transform: translateX(-50%); cursor: s-resize; }
 .resizer-e { right: -6px; top: 50%; transform: translateY(-50%); cursor: e-resize; }
 .resizer-w { left: -6px; top: 50%; transform: translateY(-50%); cursor: w-resize; }
+@media screen and (max-width: 750px) {
+
+  .header{
+    position: fixed;
+  }
+  .header2{
+    position: fixed;
+  }
+  .section {
+    width: 100%;
+    margin-left: 0;
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* Logo - smaller and left aligned */
+  .logo {
+    font-size: 24px;       /* smaller text */
+    gap: 5px;              /* smaller gap between text and image */
+    justify-content: flex-start; /* align left */
+    margin-right: 0px;
+    right: 60px;
+  }
+  .logo img {
+    width: 40px;  /* smaller logo image */
+    height: 40px;
+  }
+
+  /* Search Bar - bigger on mobile */
+  .search-bar {
+  position: relative;
+  left: -5px;          /* remove negative shift */
+  transform: none;
+  width: 200px;      /* smaller width for mobile */
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 6px 10px; /* smaller padding */
+  font-size: 14px;   /* smaller text */
+}
+
+
+  /* Menu items - smaller gaps */
+  .menu {
+    position: relative;
+    left: 20px;
+    gap: 0px;  /* less spacing between menu links */
+    font-size: 12px;
+  }
+  .menu a {
+    padding: 5px;
+  }
+
+  /* Carousel - more spacing from headers */
+  .carousel {
+    width: 95%;
+    height: 250px;
+    margin: 140px auto 20px auto; /* top margin increased for space below header/header2 */
+  }
+  .slide img {
+    border-radius: 20px;
+  }
+
+  /* Header2 (scrollable nav) */
+  .header2 {
+    top: 55px;
+    height: 40px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    padding: 0 5px;
+    white-space: nowrap;
+  }
+  .header2-scroll a {
+    font-size: 16px;
+    padding: 0 12px;
+    line-height: 40px;
+  }
+
+  /* Boxes container - exactly 2 per row */
+  .boxes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+    justify-items: center;
+  }
+
+  /* Individual boxes */
+  .box {
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+    flex-direction: column;
+  }
+  .box-image {
+    height: 120px;
+  }
+
+  /* Carousel arrows */
+  .prev, .next {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  /* Cart icon smaller */
+  #cart {
+    font-size: 24px;
+  }
+  #cart-count {
+    font-size: 14px;
+    padding: 2px 6px;
+  }
+
+}
