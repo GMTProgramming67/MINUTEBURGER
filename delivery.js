@@ -265,3 +265,167 @@ document.addEventListener("DOMContentLoaded", () => {
     cartTotalEl.textContent = `Total: ₱${total}`;
   }
 });
+/* === Draggable Cart Box (robust, pointer events, auto-initializes) === */
+document.addEventListener('DOMContentLoaded', () => {
+  const cartBox = document.getElementById('cart-box') || document.querySelector('.cart-box');
+  if (!cartBox) return;
+
+  // Use the header as the drag handle if available
+  const handle = cartBox;
+
+  // If the cart is currently centered with transform, convert that to left/top so dragging works.
+  const cs = window.getComputedStyle(cartBox);
+  const rect = cartBox.getBoundingClientRect();
+  if (!cartBox.style.left || !cartBox.style.top || (cs.transform && cs.transform !== 'none')) {
+    cartBox.style.left = rect.left + 'px';
+    cartBox.style.top  = rect.top + 'px';
+    cartBox.style.right = 'auto';
+    cartBox.style.bottom = 'auto';
+    cartBox.style.transform = 'none'; // remove translate(...) centering if present
+    cartBox.style.position = 'fixed';
+  } else {
+    // ensure we have pixel values (fallback)
+    cartBox.style.position = 'fixed';
+  }
+
+  // Dragging state
+  let dragging = false;
+  let startX = 0, startY = 0;
+  let origLeft = 0, origTop = 0;
+
+  // Make handle show grab cursor
+  handle.style.cursor = 'grab';
+
+  // pointerdown covers mouse & touch in one API
+  handle.addEventListener('pointerdown', (e) => {
+    // ignore non-left clicks
+    if (e.button && e.button !== 0) return;
+
+    // if user clicks an interactive element inside (button, input, etc.), don't start drag
+    const ignoreTags = ['button','input','a','select','textarea','label'];
+    if (ignoreTags.includes(e.target.tagName.toLowerCase())) return;
+
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    origLeft = parseFloat(cartBox.style.left) || 0;
+    origTop  = parseFloat(cartBox.style.top) || 0;
+
+    // pointer capture so we keep receiving events
+    try { handle.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+
+    cartBox.style.transition = 'none';
+    handle.style.cursor = 'grabbing';
+    document.body.style.userSelect = 'none';
+  });
+
+  // Move
+  document.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    let newLeft = origLeft + dx;
+    let newTop  = origTop + dy;
+
+    // Constrain inside the viewport (optional, prevents the cart from being dragged off-screen)
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const boxRect = cartBox.getBoundingClientRect();
+    newLeft = Math.min(Math.max(0, newLeft), Math.max(0, vw - boxRect.width));
+    newTop  = Math.min(Math.max(0, newTop),  Math.max(0, vh - boxRect.height));
+
+    cartBox.style.left = Math.round(newLeft) + 'px';
+    cartBox.style.top  = Math.round(newTop)  + 'px';
+  });
+
+  // End dragging
+  document.addEventListener('pointerup', (e) => {
+    if (!dragging) return;
+    dragging = false;
+    try { handle.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    cartBox.style.transition = ''; // restore any CSS transition
+    handle.style.cursor = 'grab';
+    document.body.style.userSelect = '';
+  });
+
+  // If the user hides/shows the cart via your existing code, it will still keep left/top pos.
+  // OPTIONAL: snap-to-edge on release (uncomment to enable)
+  /*
+  document.addEventListener('pointerup', () => {
+    if (!dragging) return;
+    dragging = false;
+    const vw = window.innerWidth;
+    const boxRect = cartBox.getBoundingClientRect();
+    const left = parseFloat(cartBox.style.left) || 0;
+    // snap to left or right whichever is closer
+    const snapLeft = (left < vw/2);
+    cartBox.style.transition = 'left 0.18s ease, top 0.18s ease';
+    cartBox.style.left = (snapLeft ? 10 : (vw - boxRect.width - 10)) + 'px';
+  });
+  */
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const cartBox = document.getElementById('cart-box') || document.querySelector('.cart-box');
+  if (!cartBox) return;
+
+  // --- Create resize handles ---
+  const resizers = ['se','e','s','ne','nw','n','w','sw'].map(dir => {
+    const div = document.createElement('div');
+    div.className = 'resizer resizer-' + dir;
+    cartBox.appendChild(div);
+    return div;
+  });
+
+  let resizing = false;
+  let resizeDir = '';
+  let startX = 0, startY = 0, startW = 0, startH = 0, startL = 0, startT = 0;
+
+  resizers.forEach(handle => {
+    handle.addEventListener('pointerdown', (e) => {
+      e.stopPropagation(); // don’t trigger dragging
+      resizing = true;
+      resizeDir = [...handle.classList].find(c => c.startsWith('resizer-')).replace('resizer-','');
+
+      startX = e.clientX;
+      startY = e.clientY;
+      startW = cartBox.offsetWidth;
+      startH = cartBox.offsetHeight;
+      startL = parseFloat(cartBox.style.left) || cartBox.getBoundingClientRect().left;
+      startT = parseFloat(cartBox.style.top)  || cartBox.getBoundingClientRect().top;
+
+      try { handle.setPointerCapture(e.pointerId); } catch(err) {}
+      document.body.style.userSelect = 'none';
+    });
+  });
+
+  document.addEventListener('pointermove', (e) => {
+    if (!resizing) return;
+
+    let dx = e.clientX - startX;
+    let dy = e.clientY - startY;
+
+    if (resizeDir.includes('e')) {
+      cartBox.style.width = Math.max(150, startW + dx) + 'px';
+    }
+    if (resizeDir.includes('s')) {
+      cartBox.style.height = Math.max(250, startH + dy) + 'px';
+    }
+    if (resizeDir.includes('w')) {
+      cartBox.style.width = Math.max(150, startW - dx) + 'px';
+      cartBox.style.left = (startL + dx) + 'px';
+    }
+    if (resizeDir.includes('n')) {
+      cartBox.style.height = Math.max(250, startH - dy) + 'px';
+      cartBox.style.top = (startT + dy) + 'px';
+    }
+  });
+
+  document.addEventListener('pointerup', (e) => {
+    if (resizing) {
+      resizing = false;
+      resizeDir = '';
+      document.body.style.userSelect = '';
+    }
+  });
+});
