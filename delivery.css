@@ -625,4 +625,37 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
     padding: 2px 6px;
   }
 
+  /* Cart icon in header */
+#cart {
+  font-size: 24px;       /* smaller than desktop */
+}
+
+/* Cart item count bubble */
+#cart-count {
+  font-size: 12px;
+  padding: 2px 5px;
+}
+
+/* Cart box popup */
+.cart-box {
+  width: 250px;           /* smaller width */
+  max-height: 300px;      /* smaller height */
+  font-size: 14px;        /* smaller text inside cart */
+  padding: 10px;
+}
+
+/* Cart items inside */
+.cart-item img {
+  width: 40px;
+  height: 40px;
+}
+
+.cart-item-name {
+  font-size: 14px;
+}
+
+.cart-item-price {
+  font-size: 14px;
+}
+
 }
