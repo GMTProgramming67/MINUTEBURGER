@@ -4,7 +4,7 @@ html, body {
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #fff9f5;
-  min-height: 10000px;
+  min-height: 1000px;
 
   /* Main scrollbar */
   scrollbar-width: thin;
@@ -85,7 +85,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   overflow-y: hidden;
   white-space: nowrap;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* center the scroll container */
   background-color: rgb(252,134,0);
   padding-bottom: 4px;
 }
@@ -101,6 +101,8 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   text-decoration: none;
   transition: color 0.3s, text-shadow 0.3s;
   border-right: 1px solid rgba(255,255,255,0.3);
+    display: inline-flex; /* keeps links in a row */
+  justify-content: center;
 }
 .header2-scroll a:last-child { border-right: none; }
 .header2-scroll a.active {
@@ -130,15 +132,15 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 .boxes-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 boxes per row */
-  gap: 100px; /* adjust spacing between boxes */
+  gap: 120px; /* adjust spacing between boxes */
   margin-top: 15px;
 }
 
 /* Box */
 .box {
-  width: 200px;
+  width: 170px;
   height: 300px;
-  background-color: rgb(231, 228, 223);
+  background-color: rgb(247, 243, 243);
   border: 0.5px solid #777777;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -167,8 +169,8 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 }
 
 .box-title {
-  font-family: 'Fredoka One', cursive;
-  font-size: 20px;
+  font-family: "Quicksand", Bold;
+  font-size: 17.8px;
   font-weight: bold;
   color: #000;
 }
@@ -182,9 +184,9 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 
 .box-price {
   font-family: 'Fredoka One', cursive;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
-  color: #000;
+  color: #b22222;
   text-align: right;
 }
 
@@ -229,8 +231,8 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
-  width: 600px;
-  max-height: 1400px;
+  width: 100px;
+  max-height: 1000px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 12px;
@@ -326,7 +328,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 1000px;
+  width: 100px;
   max-height: 400px;
   background-color: white;
   border: 1px solid #ccc;
@@ -374,11 +376,10 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
 /* === Cart Box Styling (Updated) === */
 .cart-box {
   position: fixed;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-  width: 650px;
-  max-height: 600px;
+  top: 100px;               /* starting Y position */
+  left: calc(50% - 225px);  /* center horizontally since width is 450px */
+  width: 450px;
+  max-height: 400px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
@@ -389,12 +390,14 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   font-family: 'Nunito', sans-serif;
 }
 
+
 .cart-box.hidden {
   opacity: 0;
   pointer-events: none;
-  transform: translate(50%, -50%) scale(0.85);
+  transform: scale(0.85); /* keep the "shrink" effect */
   transition: all 0.3s ease;
 }
+
 
 .cart-header {
   padding: 16px;
@@ -402,7 +405,7 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Poppins', bold;
   font-size: 24px;
   color: #b22222;
   border-bottom: 2px solid #fc8600;
@@ -479,3 +482,30 @@ html::-webkit-scrollbar-thumb { background-color: #fc8600; border-radius: 6px; b
   justify-content: flex-end;
   color: #b22222;
 }
+.cart-box {
+  position: fixed;
+  min-width: 200px;
+  min-height: 150px;
+  resize: none; /* disable default browser resizer */
+  overflow: hidden;
+}
+
+/* Generic handle styles */
+.resizer {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 50%;
+  z-index: 10001;
+}
+
+/* Positioning handles */
+.resizer-se { bottom: -6px; right: -6px; cursor: se-resize; }
+.resizer-sw { bottom: -6px; left: -6px; cursor: sw-resize; }
+.resizer-ne { top: -6px; right: -6px; cursor: ne-resize; }
+.resizer-nw { top: -6px; left: -6px; cursor: nw-resize; }
+.resizer-n { top: -6px; left: 50%; transform: translateX(-50%); cursor: n-resize; }
+.resizer-s { bottom: -6px; left: 50%; transform: translateX(-50%); cursor: s-resize; }
+.resizer-e { right: -6px; top: 50%; transform: translateY(-50%); cursor: e-resize; }
+.resizer-w { left: -6px; top: 50%; transform: translateY(-50%); cursor: w-resize; }
