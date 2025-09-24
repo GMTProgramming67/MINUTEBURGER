@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="delivery.css">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito&family=Quicksand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito&family=Quicksand&display=swap&family=Poppins" rel="stylesheet">
 <title>Minute Burger Delivery</title>
 </head>
 <body>
@@ -39,7 +39,6 @@
     <a href="#anytime-merienda">Anytime Merienda</a>
     <a href="#sulit-burger">Sulit Burger</a>
     <a href="#pinakasulit">Pinakasulit</a>
-    <a href="#savers-bundle">Saver's Bundle</a>
     <a href="#beverages">Beverages</a>
     <a href="#add-on">Add-on</a>
   </div>
@@ -48,6 +47,7 @@
 <!-- Carousel -->
 <div class="carousel">
   <div class="slides">
+    <div class="slide"><img src="MINUTEBURGER.jpg" alt="MINUTEBURGER"></div>
     <div class="slide"><img src="CHILI-CHEESE.webp" alt="Chili Cheese"></div>
     <div class="slide"><img src="FRENCH.webp" alt="French Fries"></div>
     <div class="slide"><img src="RED-HOT.jpg" alt="Red Hot"></div>
@@ -61,7 +61,7 @@
   Whats New
   <div class="boxes-container">
     <div class="box" data-price="124">
-      <div class="box-image"><img src="placeholder.jpg" alt="French Onion Franks"></div>
+      <div class="box-image"><img src="FRENCH.webp " alt="French Onion Franks"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 French Onion Franks</div>
         <div class="box-description">Two classic hotdogs topped with savory French onion sauce.</div>
@@ -73,7 +73,7 @@
     </div>
 
     <div class="box" data-price="182">
-      <div class="box-image"><img src="placeholder.jpg" alt="Steakburger"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Steakburger.jfif" alt="Steakburger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Steakburger</div>
         <div class="box-description">Juicy beef patties seasoned and grilled to perfection.</div>
@@ -85,7 +85,7 @@
     </div>
 
     <div class="box" data-price="106">
-      <div class="box-image"><img src="placeholder.jpg" alt="Chili Cheese Burger"></div>
+      <div class="box-image"><img src="Chili-Cheese-Burger.jfif" alt="Chili Cheese Burger"></div>
       <div class="box-text">
         <div class="box-title">Chili Cheese Burger</div>
         <div class="box-description">A hearty burger topped with spicy chili and melted cheese.</div>
@@ -97,12 +97,24 @@
     </div>
 
     <div class="box" data-price="106">
-      <div class="box-image"><img src="placeholder.jpg" alt="Red Hot Cheezy Chicken Burger"></div>
+      <div class="box-image"><img src="RED-HOT.jpg" alt="Red Hot Cheezy Chicken Burger"></div>
       <div class="box-text">
         <div class="box-title">Red Hot Cheezy Chicken Burger</div>
         <div class="box-description">Spicy chicken patty smothered in cheese.</div>
         <div class="box-price-container">
           <div class="box-price">₱106</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="box" data-price="38">
+      <div class="box-image"><img src="lemonblack.jpg" alt="Lemon Black Tea"></div>
+      <div class="box-text">
+        <div class="box-title">Lemon Black Tea</div>
+        <div class="box-description">Enjoy the refreshing taste of a cool, Lemon Black Tea without worrying about your health.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱38</div>
           <button class="add-cart-btn">+</button>
         </div>
       </div>
@@ -114,7 +126,7 @@
   Best Seller
   <div class="boxes-container">
     <div class="box" data-price="128">
-      <div class="box-image"><img src="placeholder.jpg" alt="Double Minute Burger Overload"></div>
+      <div class="box-image"><img src="Double-Minute-Burger.jpg" alt="Double Minute Burger Overload"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Double Minute Burger Overload</div>
         <div class="box-description">Two double-patty burgers stacked with extra toppings.</div>
@@ -125,7 +137,7 @@
       </div>
     </div>
     <div class="box" data-price="177">
-      <div class="box-image"><img src="placeholder.jpg" alt="Black Pepper Burger + Chips"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Black-Pepper-Burger-+-Leslie’s-Premium-Chips.jpg" alt="Black Pepper Burger + Chips"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Black Pepper Burger + Chips</div>
         <div class="box-description">Pepper-seasoned beef patties served with crispy chips.</div>
@@ -136,7 +148,7 @@
       </div>
     </div>
     <div class="box" data-price="183">
-      <div class="box-image"><img src="placeholder.jpg" alt="Bacon Cheese Burger + Chips"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Bacon-Cheese-Burger-+-Leslie’s-Premium-Chips.jpg" alt="Bacon Cheese Burger + Chips"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Bacon Cheese Burger + Chips</div>
         <div class="box-description">Cheesy bacon-topped burgers paired with chips.</div>
@@ -148,10 +160,77 @@
     </div>
   </div>
 </div>
+<div id="premium-bundles" class="section">
+  Premium Bundles
+  <div class="boxes-container">
+
+    <div class="box" data-price="224">
+      <div class="box-image"><img src="SteakburgerChips.jpg" alt="Steakburger + Chips"></div>
+      <div class="box-text">
+        <div class="box-title">Buy 1 Take 1 Steakburger + Chips</div>
+        <div class="box-description">Two steak burgers served with Chips.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱224</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-price="164">
+      <div class="box-image"><img src="Buy-1-Take-1-Steakburger-+-Leslie’s-Premium-Chips.jpg" alt="Beef Shawarma Burger + Chips"></div>
+      <div class="box-text">
+        <div class="box-title">Buy 1 Take 1 Beef Shawarma Burger + Chips</div>
+        <div class="box-description">Flavored beef shawarma in a burger bun with chips.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱164</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-price="171">
+      <div class="box-image"><img src="RoastedSesameChips.jpg" alt="Roasted Sesame Chicken Burger + Chips"></div>
+      <div class="box-text">
+        <div class="box-title">Buy 1 Take 1 Roasted Sesame Chicken Burger + Chips</div>
+        <div class="box-description">Grilled chicken with sesame flavor, served with Chips.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱171</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-price="173">
+      <div class="box-image"><img src="Buy-1-Take-1-Bacon-Cheese-Burger-+-Leslie’s-Premium-Chips.jpg" alt="Bacon Cheese Burger + Chips"></div>
+      <div class="box-text">
+        <div class="box-title">Buy 1 Take 1 Bacon Cheese Burger + Chips</div>
+        <div class="box-description">Bacon and cheese-topped burgers with chips.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱173</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-price="166">
+      <div class="box-image"><img src="Buy-1-Take-1-Black-Pepper-Burger-+-Leslie’s-Premium-Chips.jpg" alt="Black Pepper Burger + Chips"></div>
+      <div class="box-text">
+        <div class="box-title">Buy 1 Take 1 Black Pepper Burger + Chips</div>
+        <div class="box-description">Pepper-seasoned beef patties with chips.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱166</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div id="ala-carte" class="section">Ala-Carte
   <div class="boxes-container">
     <div class="box" data-price="182">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 Steakburger"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Steakburger.jpg" alt="Buy 1 Take 1 Steakburger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Steakburger</div>
         <div class="box-description">Juicy beef patties seasoned and grilled to perfection.</div>
@@ -162,7 +241,7 @@
       </div>
     </div>
     <div class="box" data-price="133">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 Chimichurri Burger"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Chimichurri-Burger.jpg" alt="Buy 1 Take 1 Chimichurri Burger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Chimichurri Burger</div>
         <div class="box-description">Spicy burger with chimichurri sauce.</div>
@@ -173,7 +252,7 @@
       </div>
     </div>
     <div class="box" data-price="136">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 Beef Shawarma Burger"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Beef-Shawarma-Burger.jpg" alt="Buy 1 Take 1 Beef Shawarma Burger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Beef Shawarma Burger</div>
         <div class="box-description">Flavored beef shawarma in a burger bun.</div>
@@ -184,7 +263,7 @@
       </div>
     </div>
     <div class="box" data-price="139">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 Bacon Cheese Burger"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Bacon-Cheese-Burger.jpg" alt="Buy 1 Take 1 Bacon Cheese Burger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Bacon Cheese Burger</div>
         <div class="box-description">Bacon and cheese-topped burgers.</div>
@@ -195,7 +274,7 @@
       </div>
     </div>
     <div class="box" data-price="136">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 Black Pepper Burger"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Black-Pepper-Burger.jpg" alt="Buy 1 Take 1 Black Pepper Burger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Black Pepper Burger</div>
         <div class="box-description">Pepper-seasoned beef patties.</div>
@@ -206,7 +285,7 @@
       </div>
     </div>
     <div class="box" data-price="129">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 50/50 Veggie Premium Chicken Burger"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-5050-Veggie-Premium-Chicken-Burger-+-Leslie’s-Premium-Chips.jpg" alt="Buy 1 Take 1 50/50 Veggie Premium Chicken Burger"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 50/50 Veggie Premium Chicken Burger</div>
         <div class="box-description">A mix of chicken and vegetables in a burger.</div>
@@ -217,7 +296,7 @@
       </div>
     </div>
     <div class="box" data-price="106">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 Chili con Carne Cheese Franks"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Chili-con-Carne-Cheese-Franks.jpg" alt="Buy 1 Take 1 Chili con Carne Cheese Franks"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 Chili con Carne Cheese Franks</div>
         <div class="box-description">Spicy chili cheese hotdogs.</div>
@@ -228,7 +307,7 @@
       </div>
     </div>
     <div class="box" data-price="94">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 French Onion Franks"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-French-Onion-Franks.jpg" alt="Buy 1 Take 1 French Onion Franks"></div>
       <div class="box-text">
         <div class="box-title">Buy 1 Take 1 French Onion Franks</div>
         <div class="box-description">Hotdogs with French onion sauce.</div>
@@ -243,7 +322,7 @@
 <div id="sulit-sarap-breakfast" class="section">Sulit Sarap Breakfast
   <div class="boxes-container">
     <div class="box" data-price="124">
-      <div class="box-image"><img src="placeholder.jpg" alt="B1T1 Bacon Cheeseburger + Hot Coffee"></div>
+      <div class="box-image"><img src="B1T1-Bacon-Cheeseburger-+-Hot-Coffee.jpg" alt="B1T1 Bacon Cheeseburger + Hot Coffee"></div>
       <div class="box-text">
         <div class="box-title">B1T1 Bacon Cheeseburger + Hot Coffee</div>
         <div class="box-description">Bacon cheeseburger with a hot coffee.</div>
@@ -254,7 +333,7 @@
       </div>
     </div>
     <div class="box" data-price="142">
-      <div class="box-image"><img src="placeholder.jpg" alt="B1T1 Bacon Cheeseburger + Hot Choco"></div>
+      <div class="box-image"><img src="B1T1-Bacon-Cheeseburger-+-Hot-Choco.jpg" alt="B1T1 Bacon Cheeseburger + Hot Choco"></div>
       <div class="box-text">
         <div class="box-title">B1T1 Bacon Cheeseburger + Hot Choco</div>
         <div class="box-description">Bacon cheeseburger with a hot chocolate.</div>
@@ -265,7 +344,7 @@
       </div>
     </div>
     <div class="box" data-price="93">
-      <div class="box-image"><img src="placeholder.jpg" alt="B1T1 Minute Burger + Hot Coffee"></div>
+      <div class="box-image"><img src="B1T1-Minute-Burger-+-Hot-Coffee.jpg" alt="B1T1 Minute Burger + Hot Coffee"></div>
       <div class="box-text">
         <div class="box-title">B1T1 Minute Burger + Hot Coffee</div>
         <div class="box-description">Classic Minute Burger with a hot coffee.</div>
@@ -276,7 +355,7 @@
       </div>
     </div>
     <div class="box" data-price="106">
-      <div class="box-image"><img src="placeholder.jpg" alt="B1T1 Minute Burger + Hot Choco"></div>
+      <div class="box-image"><img src="B1T1-Minute-Burger-+-Hot-Choco.jpg" alt="B1T1 Minute Burger + Hot Choco"></div>
       <div class="box-text">
         <div class="box-title">B1T1 Minute Burger + Hot Choco</div>
         <div class="box-description">Classic Minute Burger with a hot chocolate.</div>
@@ -291,10 +370,10 @@
 <div id="anytime-merienda" class="section">Anytime Merienda
   <div class="boxes-container">
     <div class="box" data-price="172">
-      <div class="box-image"><img src="placeholder.jpg" alt="Buy 1 Take 1 Chicken Time w/ 1 Box Nachos & 16oz Juice"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Chicken-Time-w-Nachos-&-16oz-Juice.jpg" alt="Buy 1 Take 1 Chicken Time w/ 1 Box Nachos & 16oz Frutwist"></div>
       <div class="box-text">
-        <div class="box-title">B1T1 Chicken Time w/ Nachos & Juice</div>
-        <div class="box-description">Chicken burger with nachos and a 16oz juice.</div>
+        <div class="box-title">B1T1 Chicken Time w/ Nachos & Frutwist</div>
+        <div class="box-description">Chicken burger with nachos and a 16oz Frutwist.</div>
         <div class="box-price-container">
           <div class="box-price">₱172</div>
           <button class="add-cart-btn">+</button>
@@ -302,10 +381,10 @@
       </div>
     </div>
     <div class="box" data-price="162">
-      <div class="box-image"><img src="placeholder.jpg" alt="B1T1 Minute Burger w/ 1 Box Nachos & 16oz Juice"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Minute-Burger-w-Nachos-&-16oz-Juice.jpg" alt="B1T1 Minute Burger w/ 1 Box Nachos & 16oz Frutwist"></div>
       <div class="box-text">
-        <div class="box-title">B1T1 Minute Burger w/ Nachos & Juice</div>
-        <div class="box-description">Classic Minute Burger with nachos and a 16oz juice.</div>
+        <div class="box-title">B1T1 Minute Burger w/ Nachos & Frutwist</div>
+        <div class="box-description">Classic Minute Burger with nachos and a 16oz Frutwist.</div>
         <div class="box-price-container">
           <div class="box-price">₱162</div>
           <button class="add-cart-btn">+</button>
@@ -313,10 +392,10 @@
       </div>
     </div>
     <div class="box" data-price="193">
-      <div class="box-image"><img src="placeholder.jpg" alt="B1T1 Double Minute Burger w/ 1 Box Nachos & 16oz Juice"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Double-Minute-Burger-w-Nachos-&-16oz-Juice.jpg" alt="B1T1 Double Minute Burger w/ 1 Box Nachos & 16oz Frutwist"></div>
       <div class="box-text">
-        <div class="box-title">B1T1 Double Minute Burger w/ Nachos & Juice</div>
-        <div class="box-description">Double-patty Minute Burger with nachos and a 16oz juice.</div>
+        <div class="box-title">B1T1 Double Minute Burger w/ Nachos & Frutwist</div>
+        <div class="box-description">Double-patty Minute Burger with nachos and a 16oz Frutwist.</div>
         <div class="box-price-container">
           <div class="box-price">₱193</div>
           <button class="add-cart-btn">+</button>
@@ -324,10 +403,10 @@
       </div>
     </div>
     <div class="box" data-price="199">
-      <div class="box-image"><img src="placeholder.jpg" alt="B1T1 Double Chicken Time w/ 1 Box Nachos & 16oz Juice"></div>
+      <div class="box-image"><img src="Buy-1-Take-1-Chicken-Time-w-Nachos-&-16oz-Juice.jpg" alt="B1T1 Double Chicken Time w/ 1 Box Nachos & 16oz Frutwist"></div>
       <div class="box-text">
-        <div class="box-title">B1T1 Double Chicken Time w/ Nachos & Juice</div>
-        <div class="box-description">Double chicken burger with nachos and a 16oz juice.</div>
+        <div class="box-title">B1T1 Double Chicken Time w/ Nachos & Frutwist</div>
+        <div class="box-description">Double chicken burger with nachos and a 16oz Frutwist.</div>
         <div class="box-price-container">
           <div class="box-price">₱199</div>
           <button class="add-cart-btn">+</button>
@@ -340,7 +419,7 @@
 <div id="sulit-burger" class="section">Sulit Burgers (Burger + Frutwist)
   <div class="boxes-container">
     <div class="box" data-price="100">
-      <div class="box-image"><img src="placeholder.jpg" alt="Minute Burger + Frutwist"></div>
+      <div class="box-image"><img src="Minute_Burger_+_Frutwist.png" alt="Minute Burger + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Minute Burger + Frutwist</div>
         <div class="box-description">Classic Minute Burger paired with a refreshing Frutwist.</div>
@@ -352,7 +431,7 @@
     </div>
 
     <div class="box" data-price="100">
-      <div class="box-image"><img src="placeholder.jpg" alt="Cheesy Burger + Frutwist"></div>
+      <div class="box-image"><img src="Cheesy_Burger_+_Frutwist.png" alt="Cheesy Burger + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Cheesy Burger + Frutwist</div>
         <div class="box-description">Cheesy burger delight, served with Frutwist.</div>
@@ -364,7 +443,7 @@
     </div>
 
     <div class="box" data-price="100">
-      <div class="box-image"><img src="placeholder.jpg" alt="Chicken Time + Frutwist"></div>
+      <div class="box-image"><img src="Chickentime.jfif" alt="Chicken Time + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Chicken Time + Frutwist</div>
         <div class="box-description">Crispy chicken burger accompanied by Frutwist.</div>
@@ -376,7 +455,7 @@
     </div>
 
     <div class="box" data-price="133">
-      <div class="box-image"><img src="placeholder.jpg" alt="Double Minute Burger + Frutwist"></div>
+      <div class="box-image"><img src="doubleminute.jfif" alt="Double Minute Burger + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Double Minute Burger + Frutwist</div>
         <div class="box-description">Double beef patties in a Minute Burger, served with Frutwist.</div>
@@ -388,7 +467,7 @@
     </div>
 
     <div class="box" data-price="152">
-      <div class="box-image"><img src="placeholder.jpg" alt="Double Cheesy Burger + Frutwist"></div>
+      <div class="box-image"><img src="doublecheesy.jfif" alt="Double Cheesy Burger + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Double Cheesy Burger + Frutwist</div>
         <div class="box-description">Double the cheese in a burger, paired with Frutwist.</div>
@@ -400,7 +479,7 @@
     </div>
 
     <div class="box" data-price="152">
-      <div class="box-image"><img src="placeholder.jpg" alt="Double Chicken Time + Frutwist"></div>
+      <div class="box-image"><img src="doublechicken.jfif" alt="Double Chicken Time + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Double Chicken Time + Frutwist</div>
         <div class="box-description">Double crispy chicken burgers, served with Frutwist.</div>
@@ -411,8 +490,20 @@
       </div>
     </div>
 
+    <div class="box" data-price="123">
+      <div class="box-image"><img src="chiliburger.jpg" alt=" Chili Cheesy Burger + Frutwist"></div>
+      <div class="box-text">
+        <div class="box-title"> Chili Cheesy Burger + Frutwist</div>
+        <div class="box-description">Spicy chili cheesy burger, complemented by Frutwist.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱123</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
     <div class="box" data-price="152">
-      <div class="box-image"><img src="placeholder.jpg" alt="Double Chili Cheesy Burger + Frutwist"></div>
+      <div class="box-image"><img src="doublechilicheese.jpg" alt="Double Chili Cheesy Burger + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Double Chili Cheesy Burger + Frutwist</div>
         <div class="box-description">Spicy chili cheesy burger, complemented by Frutwist.</div>
@@ -424,7 +515,7 @@
     </div>
 
     <div class="box" data-price="152">
-      <div class="box-image"><img src="placeholder.jpg" alt="Cheesy Dog + Frutwist"></div>
+      <div class="box-image"><img src="cheesedog.jpg" alt="Cheesy Dog + Frutwist"></div>
       <div class="box-text">
         <div class="box-title">Cheesy Dog + Frutwist</div>
         <div class="box-description">Cheesy hotdog delight, served with Frutwist.</div>
@@ -440,10 +531,10 @@
 <div id="pinakasulit" class="section"> Pinakasulit Bundles (Burger + Nachos + Drinks) 
   <div class="boxes-container">
     <div class="box" data-price="177">
-      <div class="box-image"><img src="placeholder.jpg" alt="Beef Shawarma Burger w/ Nachos & Drinks"></div>
+      <div class="box-image"><img src="shawarma.jpg" alt="Beef Shawarma Burger w/ Nachos & Drinks"></div>
       <div class="box-text">
-        <div class="box-title">Beef Shawarma Burger</div>
-        <div class="box-description">Middle Eastern-inspired beef shawarma burger, served with nachos and a drink.</div>
+        <div class="box-title">Beef Shawarma Burger with Frutwist</div>
+        <div class="box-description">Middle Eastern-inspired beef shawarma burger, served with a drink.</div>
         <div class="box-price-container">
           <div class="box-price">₱177</div>
           <button class="add-cart-btn">+</button>
@@ -452,9 +543,9 @@
     </div>
 
     <div class="box" data-price="185">
-      <div class="box-image"><img src="placeholder.jpg" alt="Bacon Cheese Burger w/ Nachos & Drinks"></div>
+      <div class="box-image"><img src="minute-burger-bacon-cheese-with-nachos-drinks.webp" alt="Bacon Cheese Burger w/ Nachos & Drinks"></div>
       <div class="box-text">
-        <div class="box-title">Bacon Cheese Burger</div>
+        <div class="box-title">Bacon Cheese Burger with Nachos and Frutwist</div>
         <div class="box-description">Juicy bacon cheese burger, complemented by nachos and a drink.</div>
         <div class="box-price-container">
           <div class="box-price">₱185</div>
@@ -464,10 +555,10 @@
     </div>
 
     <div class="box" data-price="177">
-      <div class="box-image"><img src="placeholder.jpg" alt="Black Pepper Burger w/ Nachos & Drinks"></div>
+      <div class="box-image"><img src="Black-pepper.jpg" alt="Black Pepper Burger w/ Nachos & Drinks"></div>
       <div class="box-text">
-        <div class="box-title">Black Pepper Burger</div>
-        <div class="box-description">Peppery beef burger, served with nachos and a drink.</div>
+        <div class="box-title">Black Pepper Burger with Frutwist</div>
+        <div class="box-description">Peppery beef burger, served with a drink.</div>
         <div class="box-price-container">
           <div class="box-price">₱177</div>
           <button class="add-cart-btn">+</button>
@@ -476,10 +567,10 @@
     </div>
 
     <div class="box" data-price="177">
-      <div class="box-image"><img src="placeholder.jpg" alt="Steakburger w/ Nachos & Drinks"></div>
+      <div class="box-image"><img src="Chimichurri.jpg" alt="Chimichurri w/ Nachos & Drinks"></div>
       <div class="box-text">
-        <div class="box-title">Steakburger</div>
-        <div class="box-description">Premium steakburger, accompanied by nachos and a drink.</div>
+        <div class="box-title">Chimichurri with Frutwist</div>
+        <div class="box-description">Premium Chimichurri Burger, accompanied by nachos and a drink.</div>
         <div class="box-price-container">
           <div class="box-price">₱177</div>
           <button class="add-cart-btn">+</button>
@@ -488,96 +579,128 @@
     </div>
   </div>
 </div>
-<div id="savers-bundle" class="section">🥤 Savers Bundles (Drink + Chips)
-  <div class="boxes-container">
-    <div class="box" data-price="177">
-      <div class="box-image"><img src="placeholder.jpg" alt="French Onion Franks + Drink + Clover Chips"></div>
-      <div class="box-text">
-        <div class="box-title">French Onion Franks Bundle</div>
-        <div class="box-description">Savory French onion franks, paired with a drink and Clover chips.</div>
-        <div class="box-price-container">
-          <div class="box-price">₱177</div>
-          <button class="add-cart-btn">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="box" data-price="177">
-      <div class="box-image"><img src="placeholder.jpg" alt="Black Pepper Burger + Drink + Clover Chips"></div>
-      <div class="box-text">
-        <div class="box-title">Black Pepper Burger Bundle</div>
-        <div class="box-description">Peppery beef burger, served with a drink and Clover chips.</div>
-        <div class="box-price-container">
-          <div class="box-price">₱177</div>
-          <button class="add-cart-btn">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="box" data-price="183">
-      <div class="box-image"><img src="placeholder.jpg" alt="Roasted Sesame Chicken Burger + Drink + Clover Chips"></div>
-      <div class="box-text">
-        <div class="box-title">Roasted Sesame Chicken Bundle</div>
-        <div class="box-description">Roasted sesame-flavored chicken burger, complemented by a drink and Clover chips.</div>
-        <div class="box-price-container">
-          <div class="box-price">₱183</div>
-          <button class="add-cart-btn">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="box" data-price="185">
-      <div class="box-image"><img src="placeholder.jpg" alt="Bacon Cheese Burger + Drink + Clover Chips"></div>
-      <div class="box-text">
-        <div class="box-title">Bacon Cheese Burger Bundle</div>
-        <div class="box-description">Bacon cheese burger delight, served with a drink and Clover chips.</div>
-        <div class="box-price-container">
-          <div class="box-price">₱185</div>
-          <button class="add-cart-btn">+</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Beverages -->
 <div id="beverages" class="section">Beverages
   <div class="boxes-container">
-    <div class="box">
-      <div class="box-image"><img src="placeholder.jpg" alt="Softdrink 16oz"></div>
+       <div class="box" data-price="24">
+      <div class="box-image"><img src="calamantea.jpg" alt="Iced Choco"></div>
+      <div class="box-text">
+        <div class="box-title">Calamantea 16oz</div>
+        <div class="box-description">A refreshing fusion of premium tea and the zesty essence of lemon in 16 oz. cup.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱24</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="box" data-price="25">
+      <div class="box-image"><img src="softdrink.jfif" alt="Softdrink 16oz"></div>
       <div class="box-text">
         <div class="box-title">Softdrink 16oz</div>
         <div class="box-description">Refreshing cold drink.</div>
-        <div class="box-price">₱25</div>
+        <div class="box-price-container">
+          <div class="box-price">₱25</div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
-    <div class="box">
-      <div class="box-image"><img src="placeholder.jpg" alt="Frutwist 16oz"></div>
+
+    <div class="box" data-price="30">
+      <div class="box-image"><img src="Frutwist_GrabFood.jpg" alt="Frutwist 16oz"></div>
       <div class="box-text">
         <div class="box-title">Frutwist 16oz</div>
         <div class="box-description">Sweet fruit-flavored beverage.</div>
-        <div class="box-price">₱30</div>
+        <div class="box-price-container">
+          <div class="box-price">₱30</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-price="38">
+      <div class="box-image"><img src="chocoiced.jpg" alt="Iced Choco"></div>
+      <div class="box-text">
+        <div class="box-title">Iced Choco</div>
+        <div class="box-description">Savor the rich, creamy goodness of our Best Selling Iced Choco.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱38</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-price="21">
+      <div class="box-image"><img src="hotchoco.jpg" alt="Hot Choco"></div>
+      <div class="box-text">
+        <div class="box-title">Hot Choco</div>
+        <div class="box-description">Our Best Selling Hot Choco, a comforting classic that wraps you in velvety chocolate bliss.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱21</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" data-price="28">
+      <div class="box-image"><img src="MB_MineralWater_GrabFood.jpg" alt="Bottled Mineral Water"></div>
+      <div class="box-text">
+        <div class="box-title">Bottled Mineral Water</div>
+        <div class="box-description">Bottled Mineral Water.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱28</div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+ 
 <!-- Add-on -->
 <div id="add-on" class="section">Add-on
   <div class="boxes-container">
-    <div class="box">
-      <div class="box-image"><img src="placeholder.jpg" alt="Extra Cheese"></div>
+
+    <div class="box" data-price="15">
+      <div class="box-image"><img src="MB_Egg_GrabFood copy.jpg" alt="Egg"></div>
       <div class="box-text">
-        <div class="box-title">Extra Cheese</div>
-        <div class="box-description">Add extra cheese to any burger.</div>
-        <div class="box-price">₱20</div>
+        <div class="box-title">Egg</div>
+        <div class="box-description">Add an extra egg to every order.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱15</div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
-    <div class="box">
-      <div class="box-image"><img src="placeholder.jpg" alt="Extra Patty"></div>
+     <div class="box" data-price="24">
+      <div class="box-image"><img src="cheese.jpg" alt="Supreme Cheese"></div>
       <div class="box-text">
-        <div class="box-title">Extra Patty</div>
-        <div class="box-description">Add an extra beef patty to any burger.</div>
-        <div class="box-price">₱50</div>
+        <div class="box-title">Supreme Cheese</div>
+        <div class="box-description">Good for 1 Buy 1 Take 1 order.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱24</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+<div class="box" data-price="21">
+      <div class="box-image"><img src="coleslaw.jpg" alt="Coleslaw "></div>
+      <div class="box-text">
+        <div class="box-title">Coleslaw Toppings (Good For 2 Burgers)</div>
+        <div class="box-description">Good for 1 Buy 1 Take 1 order.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱21</div>
+          <button class="add-cart-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="box" data-price="20">
+      <div class="box-image"><img src="MB_CloverChips_GrabFood.jpg" alt="Clover "></div>
+      <div class="box-text">
+        <div class="box-title">Clover Chips 24g</div>
+        <div class="box-description">Leslie's All-time fave Clover Chips.</div>
+        <div class="box-price-container">
+          <div class="box-price">₱20  </div>
+          <button class="add-cart-btn">+</button>
+        </div>
       </div>
     </div>
   </div>
@@ -592,11 +715,11 @@
 <!-- Floating Cart Box (used for receipt) -->
 <div id="cart-box" class="cart-box hidden">
   <div class="cart-header">
-    <span>🛒 Your Cart</span>
+    <span>Your Minute Burger Cart</span>
     <button id="cart-close">&times;</button>
   </div>
   <div class="cart-items">
-    <p>Your cart is empty.</p>
+    <p>Your cart is empty D:</p>
   </div>
   <div class="cart-footer">
     <div id="cart-total">Total: ₱0</div>
